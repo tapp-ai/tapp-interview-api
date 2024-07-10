@@ -5,6 +5,12 @@ const port = 3000;
 
 app.use(express.json({ strict: false }));
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
 app.get("/", (req, res) => {
   res.send("Good luck on the interview! -- Levi & Matt");
 });
@@ -32,12 +38,12 @@ app.post("/page-improvements/:id", (req, res) => {
     return;
   }
 
-  if (typeof body !== "string") {
-    res.status(400).json({ message: "Body must be a string" });
+  if (body["new"] === undefined) {
+    res.status(400).json({ message: "Body must contain 'new' key" });
     return;
   }
 
-  data.optimizations[id]["new"] = body;
+  data.optimizations[id]["new"] = body["new"];
 
   res.json({ message: "Improvement object updated" });
 });

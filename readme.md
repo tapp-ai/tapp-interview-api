@@ -66,8 +66,10 @@
 - **Request Body**:
   - **Content Type**: application/json
   - **Body**:
-    ```json
-    "Updated value for improvement object's `new` field as a string"
+    ```typescript
+    {
+      "new": string
+    }
     ```
 - **Responses**:
 
@@ -84,7 +86,7 @@
     - **Body**:
       ```json
       {
-        "message": "Body must be a string"
+        "message": "Body must contain 'new' key"
       }
       ```
   - **Status Code**: 404
@@ -102,7 +104,9 @@
     POST /page-improvements/e01dfea3-20da-4829-af7d-62e3e35597aa
     ```
     ```json
-    "Dewy Cases - Trendy Phone Cases"
+    {
+      "new": "Dewy Cases - Trendy Phone Cases"
+    }
     ```
   - **Response**:
     ```json

@@ -18,14 +18,14 @@ http://localhost:3000
   - **Status Code**: 200
   - **Content Type**: application/json
   - **Body**:
-    ```json
+    ```typescript
     [
       {
-        "id": "string",
-        "path": "string",
+        "id": string,
+        "path": string,
         "type": "TITLE" | "DESCRIPTION" | "KEYWORDS",
-        "prev": "string" | null,
-        "new": "string"
+        "prev": string | null,
+        "new": string
       },
       ...
     ]

@@ -1,15 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const { data, resetData } = require("./data");
 const app = express();
 const port = 3000;
 
 app.use(express.json({ strict: false }));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
+app.use(cors());
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("Good luck on the interview! -- Levi & Matt");
